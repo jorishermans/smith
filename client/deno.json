@@ -1,5 +1,5 @@
 {
-    "name": "@force/client",
+    "name": "@smith/client",
     "version": "0.1.0",
     "exports": "./mod.ts"
 }

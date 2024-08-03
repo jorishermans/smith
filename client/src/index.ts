@@ -10,6 +10,8 @@ export interface OpenWebSocket {
     open: boolean;
 }
 export type OpenWebSocketReturnFn = (handlers: ClientProtocolHandler[]) => void
+
+/** This function is your starting point to open a websocket on the client. */
 export const openWebSocket = (url: string): OpenWebSocket => {
     const socket = new WebSocket(url);
     let open = false;

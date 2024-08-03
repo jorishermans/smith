@@ -1,3 +1,12 @@
+# 0.4.0 (3/8/2024)
+
+- only register once not twice
+
+# 0.3.0 (3/8/2024)
+
+- improvements on smith server code
+- add jsdocs
+
 # 0.2.0 (3/8/2024)
 
 - improve on exposing dispatch function, use MessageEvent instead of only limiting it to data.

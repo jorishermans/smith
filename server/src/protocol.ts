@@ -1,3 +1,5 @@
+import { dispatch } from "./index.ts";
+
 export abstract class Protocol {
     public socket?: WebSocket;
     public id: number = -1;
@@ -11,7 +13,11 @@ export abstract class Protocol {
 
     abstract message(id: number, message: MessageEvent): void;
 
-    abstract close(id: number): void;
+    public close(_id: number): void {}
 
-    abstract error(id: number): void;
+    public error(_id: number): void {}
+
+    send(message: object) {
+        dispatch(this.id, message);
+    }
 }

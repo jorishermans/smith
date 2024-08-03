@@ -1,5 +1,6 @@
-import { dispatch } from "./dispatcher.ts";
+import { dispatch, Message } from "./dispatcher.ts";
 
+/** This abstract class you need to inherit to set up a protocol. */
 export abstract class Protocol {
     public socket?: WebSocket;
     public id: number = -1;
@@ -17,7 +18,7 @@ export abstract class Protocol {
 
     public error(_id: number): void {}
 
-    send(message: object) {
+    send(message: Message) {
         dispatch(this.id, message);
     }
 }

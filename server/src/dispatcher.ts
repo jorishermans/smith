@@ -1,8 +1,10 @@
+export type Message = string | ArrayBufferLike | Blob | ArrayBufferView;
+
 export class Dispatcher {
     clients = new Map<number, WebSocket>();
     clientId = 0;
 
-    dispatch(id: number, msg: string): void {
+    dispatch(id: number, msg: Message): void {
         const client = this.clients.get(id);
         client?.send(msg);
     }
@@ -20,6 +22,6 @@ export class Dispatcher {
 
 export const dispatcher = new Dispatcher();
 
-export const dispatch = (id: number, message: object) => {
-    dispatcher.dispatch(id, JSON.stringify(message));
+export const dispatch = (id: number, message: Message) => {
+    dispatcher.dispatch(id, message);
 }

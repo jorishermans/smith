@@ -1,4 +1,4 @@
-import { dispatch } from "./index.ts";
+import { dispatch } from "./dispatcher.ts";
 
 export abstract class Protocol {
     public socket?: WebSocket;

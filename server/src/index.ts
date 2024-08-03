@@ -1,11 +1,5 @@
-import { Dispatcher } from "./dispatcher.ts";
+import { dispatcher } from "./dispatcher.ts";
 import { Protocol } from "./protocol.ts";
-
-const dispatcher = new Dispatcher();
-
-export const dispatch = (id: number, message: object) => {
-    dispatcher.dispatch(id, JSON.stringify(message));
-}
 
 export function webSocketHandler(socket: WebSocket, protocols: Protocol[]) {
   const id = dispatcher.register(socket);

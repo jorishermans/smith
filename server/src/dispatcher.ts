@@ -17,3 +17,9 @@ export class Dispatcher {
         this.clients.delete(id);
     }
 }
+
+export const dispatcher = new Dispatcher();
+
+export const dispatch = (id: number, message: object) => {
+    dispatcher.dispatch(id, JSON.stringify(message));
+}

@@ -1,4 +1,4 @@
-# Force
+# Smith
 A websocket monorepo library for typescript projects
 
 Consisting out of 2 packages for the moment

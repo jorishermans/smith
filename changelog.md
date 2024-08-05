@@ -1,3 +1,7 @@
+# 0.5.0 (5/8/2024)
+
+- improve client smith so that you can register multiple url's to other websocket endpoints.
+
 # 0.4.0 (3/8/2024)
 
 - only register once not twice

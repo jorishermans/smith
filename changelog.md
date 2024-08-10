@@ -1,6 +1,7 @@
-# 0.5.0 (5/8/2024)
+# 0.5.0 (10/8/2024)
 
 - improve client smith so that you can register multiple url's to other websocket endpoints.
+- add common package to smith
 
 # 0.4.0 (3/8/2024)
 

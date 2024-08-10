@@ -1,6 +1,6 @@
 {
     "name": "@smith/server",
-    "version": "0.5.0",
+    "version": "0.6.0",
     "exports": "./mod.ts",
     "imports": {
         "common": "jsr:@smith/common@^0.5"

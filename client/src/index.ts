@@ -1,14 +1,21 @@
-export interface ClientProtocol {
+import {ProtocolEvent} from 'common';
+export interface IClientProtocol {
     open?: () => void;
     message: (event: MessageEvent) => void;
     close?: () => void;
     error?: (event: Event) => void;
 }
+export abstract class ClientProtocol extends ProtocolEvent implements IClientProtocol {
+    open(): void {}
+    abstract message(event: MessageEvent): void;
+    close() {}
+    error(event: Event) {}
+}
 export interface OpenWebSocket {
     socket: WebSocket;
-    registerHandlers: (handlers: ClientProtocol[]) => void;
+    registerHandlers: (handlers: IClientProtocol[]) => void;
 }
-export type OpenWebSocketReturnFn = (handlers: ClientProtocol[]) => void
+export type OpenWebSocketReturnFn = (handlers: IClientProtocol[]) => void
 
 const registered = new Map<string, boolean>();
 /** This function is your starting point to open a websocket on the client. */

@@ -19,10 +19,10 @@ export type OpenWebSocketReturnFn = (handlers: IClientProtocol[]) => void
 
 const registered = new Map<string, boolean>();
 /** This function is your starting point to open a websocket on the client. */
-export const openWebSocket = (url: string, handlers: ClientProtocol[]): OpenWebSocket => {
+export const openWebSocket = (url: string): OpenWebSocket => {
     const socket = new WebSocket(url);
     registered.set(url , false)
-    const registerHandlers = () => {
+    const registerHandlers = (handlers: IClientProtocol[]) => {
         const isRegistered = registered.get(url);
         if (isRegistered) return;
         const handleOpen = () => {

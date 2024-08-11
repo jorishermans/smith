@@ -1,3 +1,11 @@
+# 0.8.0 (11/8/2024)
+
+- add registerHandlers to the right callback
+
+# 0.7.0 (10/8/2024)
+
+- improve documentation of the packages
+
 # 0.6.0 (10/8/2024)
 
 - use common package on the client as well

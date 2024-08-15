@@ -1,3 +1,7 @@
+# 0.9.0 (15/8/2024)
+
+- move protocol abstract class to common package, bring more alignment to client and server packages.
+
 # 0.8.0 (11/8/2024)
 
 - add registerHandlers to the right callback

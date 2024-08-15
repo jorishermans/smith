@@ -1,5 +1,5 @@
 import { dispatcher } from "./dispatcher.ts";
-import { Protocol } from "./protocol.ts";
+import { Protocol } from 'common';
 
 /** This function helps you in setting up a websocket connection with the right protocols registered. 
  * @param socket websocket that you get out of Deno.upgradeWebSocket

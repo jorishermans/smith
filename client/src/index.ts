@@ -1,41 +1,38 @@
-import {ProtocolEvent} from 'common';
+import {IProtocol, Protocol} from 'common';
 export interface IClientProtocol {
-    open?: () => void;
+    open?: (id: number, socket: WebSocket) => void;
     message: (event: MessageEvent) => void;
-    close?: () => void;
-    error?: (event: Event) => void;
+    close?: (id: number) => void;
+    error?: (id: number, event: Event) => void;
 }
-export abstract class ClientProtocol extends ProtocolEvent implements IClientProtocol {
-    open(): void {}
-    abstract message(event: MessageEvent): void;
-    close() {}
-    error(event: Event) {}
-}
+export abstract class ClientProtocol extends Protocol { }
 export interface OpenWebSocket {
     socket: WebSocket;
-    registerHandlers: (handlers: IClientProtocol[]) => void;
+    registerHandlers: (handlers: IProtocol[]) => void;
 }
-export type OpenWebSocketReturnFn = (handlers: IClientProtocol[]) => void
+export type OpenWebSocketReturnFn = (handlers: IProtocol[]) => void
 
+let id = -1;
 const registered = new Map<string, boolean>();
 /** This function is your starting point to open a websocket on the client. */
 export const openWebSocket = (url: string): OpenWebSocket => {
     const socket = new WebSocket(url);
-    registered.set(url , false)
-    const registerHandlers = (handlers: IClientProtocol[]) => {
+    const newId = ++id;
+    registered.set(url , false);
+    const registerHandlers = (handlers: IProtocol[]) => {
         const isRegistered = registered.get(url);
         if (isRegistered) return;
         const handleOpen = () => {
-            handlers.forEach(h => h.open?.());
+            handlers.forEach(h => h.open?.(newId, socket));
           };
           const handleMessage = (event: MessageEvent) => {
-            handlers.forEach(h => h.message(event));
+            handlers.forEach(h => h.message(id, event));
           };
           const handleError = (event: Event) => {
-            handlers.forEach(h => h.error?.(event));
+            handlers.forEach(h => h.error?.(id, event));
           };
           const handleClose = () => {
-            handlers.forEach(h => h.close?.());
+            handlers.forEach(h => h.close?.(id));
             registered.set(url, false);
 
             socket.removeEventListener("open", handleOpen);

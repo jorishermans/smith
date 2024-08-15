@@ -1,10 +1,8 @@
 import { dispatch, Message } from "./dispatcher.ts";
-import {Protocol} from 'common';
+import { Protocol } from 'common';
 
 /** This abstract class you need to inherit to set up a protocol. */
 export abstract class ServerProtocol extends Protocol {
-    public socket?: WebSocket;
-    public id: number = -1;
 
     constructor() {
         super()
